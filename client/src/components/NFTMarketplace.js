@@ -323,7 +323,7 @@ const NFTMarketplaceABI = [
 	}
 ];
 
-const NFTMarketplace = ({ state, updateListing }) => {
+const NFTMarketplace = ({ state, updateListings }) => {
   const [nftContractAddress, setNftContractAddress] = useState('');
   const [tokenId, setTokenId] = useState('');
   const [price, setPrice] = useState('');
@@ -336,7 +336,7 @@ const NFTMarketplace = ({ state, updateListing }) => {
   const fetchListings = async () => {
     const nftMarketplaceContract = new ethers.Contract(NFTMarketplaceAddress, NFTMarketplaceABI, state.provider);
     const activeListings = await nftMarketplaceContract.getAllActiveListings();
-    updateListing(activeListings);
+    updateListings(activeListings);
   };
 
   const fetchMetadata = async () => {
